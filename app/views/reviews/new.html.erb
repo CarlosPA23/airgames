@@ -1,0 +1,7 @@
+<%= simple_form_for [@game, @review] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
+<%= link_to "Back", game_path(@game) %>
+<%= link_to "Homepage", games_path %>

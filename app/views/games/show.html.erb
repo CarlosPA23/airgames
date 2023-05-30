@@ -1,15 +1,29 @@
 <h1><%= @game.title %></h1>
-<p><%= @game.description %></p>
-<p><%= @game.price %></p>
-<p><%= @game.category %></p>
-<%= link_to "Edit", edit_game_path(@game) %>
-<%= link_to "Delete", game_path(@game), data: { turbo_method: :delete } %>
-<%= link_to "Booking", new_game_booking_path(@game) %>
+<%= cl_image_tag(@game.photo.key) %>
+<p>Owner: <%= @game.user.first_name %></p>
+<p>Description: <%= @game.description %></p>
+<p>Price: €<%= @game.price %>/day</p>
+<p>Category: <%= @game.category %></p>
+
+<% if policy(@game).edit? %>
+  <%= link_to "Edit", edit_game_path(@game) %>
+<% end %>
+<% if policy(@game).destroy? %>
+  <%= link_to "Delete", game_path(@game), data: { turbo_method: :delete } %>
+<% end %>
+<%= link_to "Rent game", new_game_booking_path(@game) %>
 <%= link_to "Back", games_path %>
 
 <% unless @game.bookings.empty? %>
-  <h4><%= "This game bookings:" %></h4>
+  <h2><%= "This game bookings:" %></h2>
   <% @game.bookings.each do |book| %>
     <p><%= "#{book.user.first_name} booked this game from #{book.start_date} to #{book.end_date}" %></p>
   <% end %>
+<% end %>
+
+<h2>Reviews</h2>
+<%= link_to "Add review", new_game_review_path(@game) %>
+<% @game.reviews.each do |review| %>
+  <p><%= review.user.first_name %>: <%= review.comment %></p>
+  <p><%= review.rating%></p>
 <% end %>
