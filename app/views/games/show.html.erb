@@ -2,6 +2,7 @@
 <p><%= @game.description %></p>
 <p><%= @game.price %></p>
 <p><%= @game.category %></p>
+<%= cl_image_tag(@game.photo.key) %>
 <%= link_to "Edit", edit_game_path(@game) %>
 <%= link_to "Delete", game_path(@game), data: { turbo_method: :delete } %>
 <%= link_to "Back", games_path %>
