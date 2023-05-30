@@ -4,6 +4,11 @@
 <p><%= @game.description %></p>
 <p><%= @game.price %></p>
 <p><%= @game.category %></p>
+<h2>Reviews</h2>
+<% @game.reviews.each do |review| %>
+<p><%= review.comment %></p>
+<p><%= review.rating%></p>
+<% end %>
 
 <% if policy(@game).edit? %>
   <%= link_to "Edit", edit_game_path(@game) %>
