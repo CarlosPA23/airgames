@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :games do
+    resources :bookings, only: %i[index show edit update destroy]
     resources :reviews, only: %i[new create]
   end
+
 end
