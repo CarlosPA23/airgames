@@ -1,8 +1,14 @@
 <h1><%= @game.title %></h1>
+<%= cl_image_tag(@game.photo.key) %>
+<p>Owner: <%= @game.user.first_name %></p>
 <p><%= @game.description %></p>
 <p><%= @game.price %></p>
 <p><%= @game.category %></p>
-<%= cl_image_tag(@game.photo.key) %>
-<%= link_to "Edit", edit_game_path(@game) %>
-<%= link_to "Delete", game_path(@game), data: { turbo_method: :delete } %>
+
+<% if policy(@game).edit? %>
+  <%= link_to "Edit", edit_game_path(@game) %>
+<% end %>
+<% if policy(@game).destroy? %>
+  <%= link_to "Delete", game_path(@game), data: { turbo_method: :delete } %>
+<% end %>
 <%= link_to "Back", games_path %>
