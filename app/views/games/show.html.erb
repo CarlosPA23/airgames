@@ -4,4 +4,12 @@
 <p><%= @game.category %></p>
 <%= link_to "Edit", edit_game_path(@game) %>
 <%= link_to "Delete", game_path(@game), data: { turbo_method: :delete } %>
+<%= link_to "Booking", new_game_booking_path(@game) %>
 <%= link_to "Back", games_path %>
+
+<% unless @game.bookings.empty? %>
+  <h4><%= "This game bookings:" %></h4>
+  <% @game.bookings.each do |book| %>
+    <p><%= "#{book.user.first_name} booked this game from #{book.start_date} to #{book.end_date}" %></p>
+  <% end %>
+<% end %>

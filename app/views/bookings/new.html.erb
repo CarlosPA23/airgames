@@ -1,0 +1,9 @@
+<%= 'Book this cool game' %>
+<%= simple_form_for([@game, @booking]) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= @booking.total_price = @game.price * (@booking.end_date.to_i - @booking.start_date.to_i) %>
+  <%= f.submit %>
+<% end %>
+
+<%# we may need to display the total price before booking it %>
