@@ -5,8 +5,3 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Game.destroy_all
-
-Game.create(title: 'test 1', description: 'Some description', price: 9.99)
-Game.create(title: 'test 2', description: 'Some description', price: 9.99)
-Game.create(title: 'test 3', description: 'Some description', price: 9.99)
