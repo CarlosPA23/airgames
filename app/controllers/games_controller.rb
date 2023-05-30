@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
   before_action :set_user, only: %i[new create]
-  before_action :set_game, only: [:show, :destroy, :edit, :update]
+  before_action :set_game, only: %i[show edit update destroy]
 
   def index
     @games = Game.all
@@ -18,7 +18,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.user = @user
     if @game.save
-      redirect_to user_path(@user)
+      redirect_to games_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class GamesController < ApplicationController
     @game.update(game_params)
     redirect_to game_path(@game)
   end
-  
+
   def destroy
     @game.destroy
     redirect_to games_path, status: :see_other
@@ -44,7 +44,7 @@ class GamesController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def game_params

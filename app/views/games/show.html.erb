@@ -3,4 +3,5 @@
 <p><%= @game.price %></p>
 <p><%= @game.category %></p>
 <%= link_to "Edit", edit_game_path(@game) %>
-<%= link_to "Delete", games_path, data: { turbo_method: :delete } %>
+<%= link_to "Delete", game_path(@game), data: { turbo_method: :delete } %>
+<%= link_to "Back", games_path %>
