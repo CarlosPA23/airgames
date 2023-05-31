@@ -1,6 +1,2 @@
 <h1>Edit your booking</h1>
-<%= simple_form_for (@booking) do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit "edit your booking", class: "btn btn-primary" %>
-<% end %>
+<%= render 'shared/booking_form' %>
