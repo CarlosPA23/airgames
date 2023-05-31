@@ -1,11 +1,11 @@
-<div data-controller="price-display" data-price-display-price-value="<%= @game.price %>">
+<div data-controller="price-display" class="form container" data-price-display-price-value="<%= @game.price %>">
 
-<%= 'Book this cool game' %>
-<%= simple_form_for([@game, @booking]) do |f| %>
-  <%= f.input :start_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "startDate"}} %>
-  <%= f.input :end_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "endDate"}} %>
- <p><%= "Total price:" %><span data-price-display-target="price"></span>€</p>
-  <%= f.submit %>
-<% end %>
-<%= link_to "Back", game_path(@game) %>
+  <%= 'Book this cool game' %>
+    <%= simple_form_for([@game, @booking]) do |f| %>
+      <%= f.input :start_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "startDate"}} %>
+      <%= f.input :end_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "endDate"}} %>
+      <p><%= "Total price:" %><span data-price-display-target="price"></span>€</p>
+      <%= f.submit "Book it!", class: "btn btn-primary" %>
+    <% end %>
+    <div id="back"><%= link_to "Back", game_path(@game), class: "btn btn-primary"  %></div>
 </div>

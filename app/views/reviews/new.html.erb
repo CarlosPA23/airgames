@@ -1,7 +1,9 @@
-<%= simple_form_for [@game, @review] do |f| %>
-  <%= f.input :comment %>
-  <%= f.input :rating, collection: (1..5) %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
-<%= link_to "Back", game_path(@game) %>
-<%= link_to "Homepage", games_path %>
+<div class="form container">
+  <h1>Hey, did you like it?</h1>
+  <%= simple_form_for [@game, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating, collection: (1..5) %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+  <div id="back"><%= link_to "Back", game_path(@game), class: "btn btn-primary" %></div>
+</div>
