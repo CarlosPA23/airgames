@@ -1,1 +1,10 @@
 // Specific CSS for your home-page
+a {
+  text-decoration: none;
+}
+
+#game-list {
+  display: grid;
+  width: 96vw;
+  margin: 0 auto;
+}
