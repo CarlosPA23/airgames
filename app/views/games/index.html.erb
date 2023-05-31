@@ -5,8 +5,6 @@
   <% @games.each do |game| %>
     <li>
       <h2><%= link_to game.title, game_path(game) %></h2>
-      <p><%= game.description %></p>
-      <p><%= game.price %></p>
       <p><%= game.category %></p>
     </li>
   <% end %>
