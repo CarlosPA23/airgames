@@ -11,17 +11,26 @@
 <% if policy(@game).destroy? %>
   <%= link_to "Delete", game_path(@game), data: { turbo_method: :delete } %>
 <% end %>
-<%= link_to "Rent game", new_game_booking_path(@game) %>
+<% if !policy(@game).edit? %>
+  <%= link_to "Rent game", new_game_booking_path(@game) %>
+<% end %>
 <%= link_to "Back", games_path %>
 
 <% unless @game.bookings.empty? %>
   <h2><%= "This game bookings:" %></h2>
   <% @game.bookings.each do |book| %>
-    <p><%= "#{book.user.first_name} booked this game from #{book.start_date} to #{book.end_date}" %> <%= link_to "Edit", edit_booking_path(book) %> <%= link_to "Delete", booking_path(book), data: { turbo_method: :delete} %></p>
+    <p><%= "#{book.user.first_name} booked this game from #{book.start_date} to #{book.end_date}" %>
+       <% if policy(book).edit?%>
+       <%= link_to "Edit", edit_booking_path(book) %>
+       <%= link_to "Delete", booking_path(book), data: { turbo_method: :delete} %></p>
+        <% end %>
   <% end %>
 <% end %>
 
-<h2>Reviews</h2>
+<% unless @game.reviews.empty? %>
+  <h2><%= 'Reviews' %></h2>
+<% end %>
+
 <%= link_to "Add review", new_game_review_path(@game) %>
 <% @game.reviews.each do |review| %>
   <p><%= review.user.first_name %>: <%= review.comment %></p>
