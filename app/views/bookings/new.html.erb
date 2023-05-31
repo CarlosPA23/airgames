@@ -1,7 +1,11 @@
+<div data-controller="price-display" data-price-display-price-value="<%= @game.price %>">
+
 <%= 'Book this cool game' %>
 <%= simple_form_for([@game, @booking]) do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
+  <%= f.input :start_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "startDate"}} %>
+  <%= f.input :end_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "endDate"}} %>
+ <p><%= "Total price:" %><span data-price-display-target="price"></span>€</p>
   <%= f.submit %>
 <% end %>
 <%= link_to "Back", game_path(@game) %>
+</div>
