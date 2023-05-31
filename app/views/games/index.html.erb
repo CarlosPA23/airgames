@@ -4,6 +4,7 @@
 <ul>
   <% @games.each do |game| %>
     <li>
+      <%= cl_image_tag(game.photo.key) %>
       <h2><%= link_to game.title, game_path(game) %></h2>
       <p><%= game.category %></p>
     </li>
