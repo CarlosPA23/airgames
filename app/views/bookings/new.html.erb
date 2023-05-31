@@ -1,7 +1,9 @@
-<%= 'Book this cool game' %>
-<%= simple_form_for([@game, @booking]) do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit %>
-<% end %>
-<%= link_to "Back", game_path(@game) %>
+<div class="form container">
+  <h1><%= 'Book this cool game' %></h1>
+  <%= simple_form_for([@game, @booking]) do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit "Book it!", class: "btn btn-primary" %>
+  <% end %>
+  <div id="back"><%= link_to "Back", game_path(@game), class: "btn btn-primary"  %></div>
+</div>
