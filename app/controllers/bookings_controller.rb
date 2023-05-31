@@ -28,6 +28,21 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    if @booking.update(booking_params)
+      redirect_to game_path(@booking.game)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_game
