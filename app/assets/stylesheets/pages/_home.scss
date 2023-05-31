@@ -1,5 +1,15 @@
 // Specific CSS for your home-page
+a {
+  text-decoration: none;
+}
+
 #banner {
   height: 100vh;
   background-size: cover;
+}
+
+#game-list {
+  display: grid;
+  width: 96vw;
+  margin: 0 auto;
 }

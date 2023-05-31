@@ -1,11 +1,18 @@
 <h1>Games</h1>
 <%= link_to 'Homepage', root_path %>
 <%= link_to "New game", new_game_path %>
-<ul>
-  <% @games.each do |game| %>
-    <li>
-      <h2><%= link_to game.title, game_path(game) %></h2>
-      <p><%= game.category %></p>
-    </li>
-  <% end %>
-</ul>
+
+
+  <div id='game-list' class='mt-3'>
+    <div class="row justify-content-around">
+      <% @games.each do |game| %>
+          <div class='card p-0 col-4 ms-1 me-1'>
+            <%= cl_image_tag(game.photo.key) %>
+            <div class=''>
+              <h2><%= link_to game.title, game_path(game) %></h2>
+              <p><%= game.category %></p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
