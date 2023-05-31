@@ -26,4 +26,7 @@
 <% @game.reviews.each do |review| %>
   <p><%= review.user.first_name %>: <%= review.comment %></p>
   <p><%= review.rating%></p>
+    <% if policy(review).destroy? %>
+      <%= link_to "Delete", review_path(review), data: { turbo_method: :delete } %>
+    <% end %>
 <% end %>
