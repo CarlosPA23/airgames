@@ -17,7 +17,7 @@
 <% unless @game.bookings.empty? %>
   <h2><%= "This game bookings:" %></h2>
   <% @game.bookings.each do |book| %>
-    <p><%= "#{book.user.first_name} booked this game from #{book.start_date} to #{book.end_date}" %></p>
+    <p><%= "#{book.user.first_name} booked this game from #{book.start_date} to #{book.end_date}" %> <%= link_to "edit", edit_booking_path(book) %></p>
   <% end %>
 <% end %>
 
