@@ -9,6 +9,9 @@ gem "cloudinary"
 
 gem 'pundit'
 
+gem "geocoder"
+
+gem 'active_storage_validations'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.5"
@@ -52,6 +55,10 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails"
+
+# Use to have the search feature
+gem "pg_search"
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
