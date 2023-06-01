@@ -1,8 +1,2 @@
-<div class="form container">
-  <h1>Edit your booking</h1>
-  <%= simple_form_for (@booking) do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.submit "Edit", class: "btn btn-primary" %>
-  <% end %>
-</div>
+<h1>Edit your booking</h1>
+<%= render 'shared/booking_form' %>
