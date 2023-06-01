@@ -43,19 +43,9 @@
       <% unless @game.reviews.empty? %>
         <h2><%= 'Reviews' %></h2>
       <% end %>
-
-      <%= link_to '<i class="fa-regular fa-comment"></i>'.html_safe, new_game_review_path(@game) %>
-      <% @game.reviews.each do |review| %>
-        <p><%= review.user.first_name %>: <%= review.comment %></p>
-        <p><%= review.rating%></p>
-          <% if policy(review).destroy? %>
-            <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, review_path(review), data: { turbo_method: :delete } %>
-          <% end %>
-      <% end %>
     </div>
   </div>
 </div>
-
 
   <div style="width: 70%; height: 500px;"
     data-controller="map"
