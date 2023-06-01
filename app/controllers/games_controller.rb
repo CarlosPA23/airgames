@@ -17,6 +17,11 @@ class GamesController < ApplicationController
 
   def show
     authorize @game
+
+    @markers = [{
+      lat: @game.latitude,
+      lng: @game.longitude
+    }]
   end
 
   def new
