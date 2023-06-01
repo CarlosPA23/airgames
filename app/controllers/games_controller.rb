@@ -6,13 +6,26 @@ class GamesController < ApplicationController
   def index
     # @games = Game.all
     @games = policy_scope(Game)
+    
     if params[:query].present?
       @games = Game.search_by_title_and_category(params[:query])
     end
+    
+     @markers = @games.geocoded.map do |game|
+      {
+        lat: game.latitude,
+        lng: game.longitude
+      }
+      end
   end
 
   def show
     authorize @game
+
+    @markers = [{
+      lat: @game.latitude,
+      lng: @game.longitude
+    }]
   end
 
   def new
@@ -58,6 +71,6 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:title, :description, :price, :category, :photo)
+    params.require(:game).permit(:title, :description, :price, :category, :photo, :address)
   end
 end
