@@ -6,6 +6,9 @@ class GamesController < ApplicationController
   def index
     # @games = Game.all
     @games = policy_scope(Game)
+    if params[:query].present?
+      @games = Game.search_by_title_and_category(params[:query])
+    end
   end
 
   def show
