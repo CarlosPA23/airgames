@@ -3,6 +3,7 @@ body {
   &::-webkit-scrollbar {
     display: none;
   }
+  height: 3000px;
 }
 
 a {
@@ -18,4 +19,14 @@ a {
   display: grid;
   width: 96vw;
   margin: 0 auto;
+}
+
+.fa-star {
+  color: rgb(247, 220, 23);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+}
+
+.empty-star {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
 }

@@ -5,10 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :last_name, :address, presence: true
-  validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/, message: "Should only contain letters"}
+  validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/, message: "Should only contain letters" }
 
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  has_one_attached :photo
+
+  # geocoded_by :address
+  # after_validation :geocode, if: :will_save_change_to_address?
 
   has_many :games, dependent: :destroy
   has_many :bookings, dependent: :destroy

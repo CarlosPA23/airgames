@@ -1,52 +1,54 @@
-<div>
-    <%= cl_image_tag @game.photo.key, class: "img-style" %>
+<%= link_to '<i class="fa-solid fa-arrow-left-long"></i> back'.html_safe, games_path, class: 'me-5 back' %>
+<div class="showgrid">
+  <%= cl_image_tag @game.photo.key, class: "img-style" %>
   <div class="show-details container">
     <h1 class="title"><%= @game.title %></h1>
     <p>Owner: <%= @game.user.first_name %></p>
     <p>Description: <%= @game.description %></p>
-    <p>Price: €<%= @game.price %>/day</p>
+    <p>Price: €<%= @game.price %>/hour</p>
     <p>Category: <%= @game.category %></p>
 
-    <%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, games_path, class: 'me-5 btn' %>
-
-    <% if policy(@game).edit? %>
-      <%= link_to "Edit", edit_game_path(@game), class: 'me-5 btn btn-primary' %>
-    <% end %>
-    <% if policy(@game).destroy? %>
-      <%= link_to "Delete", game_path(@game), data: { turbo_method: :delete }, class: 'me-5 btn btn-primary' %>
-    <% end %>
     <% if !policy(@game).edit? %>
-      <%= link_to "Rent game", new_game_booking_path(@game), class: 'me-5' %>
-    <% end %>
-
-    <% unless @game.bookings.empty? %>
-      <h2><%= "This game bookings:" %></h2>
-      <% @game.bookings.each do |book| %>
-        <p><%= "#{book.user.first_name} booked this game from #{book.start_date} to #{book.end_date}" %>
-          <% if policy(book).edit?%>
-          <%= link_to "Edit", edit_booking_path(book), class: 'me-5 btn btn-primary' %>
-          <%= link_to "Delete", booking_path(book), data: { turbo_method: :delete}, class: 'me-5' %></p>
-          <% end %>
+        <%= link_to "Book it!", new_game_booking_path(@game), class: 'btn btn-primary book' %>
       <% end %>
-    <% end %>
+
+    <div class="btn-line">
+      <% if policy(@game).edit? %>
+        <%= link_to '<i class="fa-solid fa-pen"></i>'.html_safe, edit_game_path(@game), class: 'me-5' %>
+      <% end %>
+      <% if policy(@game).destroy? %>
+        <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, game_path(@game), data: { turbo_method: :delete }, class: 'me-5' %>
+      <% end %>
 
     <% unless @game.reviews.empty? %>
       <h2><%= 'Reviews' %></h2>
     <% end %>
-    
+
     <%= link_to "Add review", new_game_review_path(@game) %>
     <% @game.reviews.each do |review| %>
       <p><%= review.user.first_name %>: <%= review.comment %></p>
-      <p><%= review.rating%></p>
+      <p>
+        <% review.rating.times do %>
+          <i class="fa-solid fa-star"></i>
+        <% end %>
+        <% (5 - review.rating).times do %>
+          <i class="fa-solid fa-star empty-star"></i>
+        <% end %>
+      </p>
         <% if policy(review).destroy? %>
           <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, review_path(review), data: { turbo_method: :delete } %>
         <% end %>
-    <% end %>
+      <% end %>
+
+      <% unless @game.reviews.empty? %>
+        <h2><%= 'Reviews' %></h2>
+      <% end %>
+    </div>
   </div>
 </div>
 
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+  <div style="width: 70%; height: 500px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>", class='map'>
+  </div>
