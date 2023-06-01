@@ -37,7 +37,14 @@
     <%= link_to "Add review", new_game_review_path(@game) %>
     <% @game.reviews.each do |review| %>
       <p><%= review.user.first_name %>: <%= review.comment %></p>
-      <p><%= review.rating%></p>
+      <p>
+        <% review.rating.times do %>
+          <i class="fa-solid fa-star"></i>
+        <% end %>
+        <% (5 - review.rating).times do %>
+          <i class="fa-solid fa-star empty-star"></i>
+        <% end %>
+      </p>
         <% if policy(review).destroy? %>
           <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, review_path(review), data: { turbo_method: :delete } %>
         <% end %>
