@@ -12,9 +12,15 @@ class Game < ApplicationRecord
 
   # code to Searching One model using PgSearch GEM module
   include PgSearch::Model
-  pg_search_scope :search_by_title_and_category
-    against: [ :title , :category ]
+  pg_search_scope :search_by_title_and_category,
+    against: [ :title , :category ],
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+
+  validates :title, :description, :price, :category, presence: true
+  validates :price, numericality: { greater_than: 0 }
+  validates :category, inclusion: { in: ["Console", "Board", "Sports", "Silly"] }
+
+  validates :photo, attached: true
 end
