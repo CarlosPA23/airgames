@@ -6,13 +6,17 @@ class GamesController < ApplicationController
   def index
     # @games = Game.all
     @games = policy_scope(Game)
-
-    @markers = @games.geocoded.map do |game|
+    
+    if params[:query].present?
+      @games = Game.search_by_title_and_category(params[:query])
+    end
+    
+     @markers = @games.geocoded.map do |game|
       {
         lat: game.latitude,
         lng: game.longitude
       }
-    end
+      end
   end
 
   def show
