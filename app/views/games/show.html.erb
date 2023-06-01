@@ -4,7 +4,7 @@
     <h1 class="title"><%= @game.title %></h1>
     <p>Owner: <%= @game.user.first_name %></p>
     <p>Description: <%= @game.description %></p>
-    <p>Price: €<%= @game.price %>/day</p>
+    <p>Price: €<%= @game.price %>/hour</p>
     <p>Category: <%= @game.category %></p>
 
     <%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, games_path, class: 'me-5 btn' %>
@@ -33,7 +33,7 @@
     <% unless @game.reviews.empty? %>
       <h2><%= 'Reviews' %></h2>
     <% end %>
-    
+
     <%= link_to "Add review", new_game_review_path(@game) %>
     <% @game.reviews.each do |review| %>
       <p><%= review.user.first_name %>: <%= review.comment %></p>
