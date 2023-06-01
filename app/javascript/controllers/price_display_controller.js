@@ -21,15 +21,41 @@ export default class extends Controller {
     this.priceTarget.innerText = totalPrice
   }
 
+  // initFlatpicker() {
+  //   flatpickr(this.startDateTarget, {
+  //     minDate: "today",
+  //     dateFormat: "Y-m-d",
+  //   });
+
+  //   flatpickr(this.endDateTarget, {
+  //     minDate: "this.startDateTarget.value",
+  //     dateFormat: "Y-m-d",
+  //   });
+  // }
+
   initFlatpicker() {
+    let endDatePicker;
+
     flatpickr(this.startDateTarget, {
       minDate: "today",
       dateFormat: "Y-m-d",
+      onChange: (selectedDates, dateStr, instance) => {
+        if (selectedDates.length > 0) {
+          let date = new Date(selectedDates[0]);
+          date.setDate(date.getDate() + 1);
+          if (endDatePicker) {
+            endDatePicker.set('minDate', date);
+          }
+        }
+      },
     });
 
-    flatpickr(this.endDateTarget, {
-      minDate: this.startDateTarget.value,
+    endDatePicker = flatpickr(this.endDateTarget, {
+      minDate: new Date().fp_incr(1), // initially set minDate to tomorrow
       dateFormat: "Y-m-d",
     });
   }
+
+
+
 }
