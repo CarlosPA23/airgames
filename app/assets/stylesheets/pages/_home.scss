@@ -20,3 +20,13 @@ a {
   width: 96vw;
   margin: 0 auto;
 }
+
+.fa-star {
+  color: rgb(247, 220, 23);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+}
+
+.empty-star {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+}

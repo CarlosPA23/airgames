@@ -18,3 +18,6 @@ application.register("navbar", NavbarController)
 
 import PriceDisplayController from "./price_display_controller"
 application.register("price-display", PriceDisplayController)
+
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)
