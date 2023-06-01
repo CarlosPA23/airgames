@@ -6,11 +6,11 @@ class GamesController < ApplicationController
   def index
     # @games = Game.all
     @games = policy_scope(Game)
-    
+
     if params[:query].present?
       @games = Game.search_by_title_and_category(params[:query])
     end
-    
+
      @markers = @games.geocoded.map do |game|
       {
         lat: game.latitude,
@@ -38,7 +38,7 @@ class GamesController < ApplicationController
     @game.user = @user
     authorize @game
     if @game.save
-      redirect_to games_path
+      redirect_to game_path(@game)
     else
       render :new, status: :unprocessable_entity
     end
