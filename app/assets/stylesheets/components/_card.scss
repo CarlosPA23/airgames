@@ -28,14 +28,11 @@
     color: white;
     font-size: 25px;
     font-weight: bold;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
   }
 
   a:hover{
     opacity: 0.9;
   }
-}
 
-.review-card {
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.08);
 }

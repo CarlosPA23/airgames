@@ -1,15 +1,9 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
-      <div data-controller="price-display" data-price-display-price-value="<%= @game.price %>">
-        <%= simple_form_for(arguments) do |f| %>
-        <%= f.input :start_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "startDate"}} %>
-        <%= f.input :end_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "endDate"}} %>
-        <p><%= "Total price:" %><span data-price-display-target="price"></span>€</p>
-        <%= f.submit %>
-      <% end %>
-      <%= link_to "Back", game_path(@game) %>
-      </div>
-    </div>
-  </div>
+<div data-controller="price-display" data-price-display-price-value="<%= @game.price %>">
+  <%= simple_form_for(arguments) do |f| %>
+  <%= f.input :start_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "startDate"}} %>
+  <%= f.input :end_date, as: :string, input_html: { data: {action: "change->price-display#calculate", price_display_target: "endDate"}} %>
+  <p><%= "Total price:" %><span data-price-display-target="price"></span>€</p>
+  <%= f.submit %>
+<% end %>
+<%= link_to "Back", game_path(@game) %>
 </div>

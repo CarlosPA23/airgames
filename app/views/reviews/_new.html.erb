@@ -5,4 +5,5 @@
     <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
     <%= f.submit "Submit review", class: "btn btn-primary" %>
   <% end %>
+  <div id="back"><%= link_to "Back", game_path(game), class: "btn btn-primary" %></div>
 </div>

@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     authorize @review
     @review.destroy
-    redirect_to game_path(@review.game), status: :see_other
+    redirect_to game_path(@review), status: :see_other
   end
 
   private
