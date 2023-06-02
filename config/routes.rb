@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :reviews, only: [:destroy]
 
   get ':category', to: 'categories#index'
+  get '/dashboard', to: 'pages#dashboard'
 end

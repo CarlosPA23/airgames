@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_many :games, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :received_bookings, through: :games, source: :bookings
 
   has_many :games, through: :bookings
 
