@@ -11,8 +11,53 @@ a {
 }
 
 #banner {
-  height: 100vh;
-  background-size: cover;
+  overflow-x: hidden;
+
+  figure {
+    position: relative;
+    height: 100vh;
+    width: 1000%;
+    margin: 0;
+    left: 0;
+    animation: 15s banner infinite;
+
+    img {
+      height: 100vh;
+      object-fit: cover;
+      float: left;
+      width: 100vw;
+    }
+  }
+
+  @keyframes banner {
+    0% {
+      left: 0;
+    }
+    20% {
+      left: 0;
+    }
+    25% {
+      left: -100%;
+    }
+    45% {
+      left: -100%;
+    }
+    50% {
+      left: -200%;
+    }
+    70% {
+      left: -200%;
+    }
+    75% {
+      left: -300%;
+    }
+    95% {
+      left: -300%;
+    }
+    100% {
+      left: -400%;
+    }
+  }
 }
 
 #game-list {
