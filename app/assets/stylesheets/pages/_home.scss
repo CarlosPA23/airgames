@@ -3,7 +3,7 @@ body {
   &::-webkit-scrollbar {
     display: none;
   }
-  height: 3000px;
+  min-height: 150vh;
 }
 
 a {
@@ -74,4 +74,11 @@ a {
 .empty-star {
   color: transparent;
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+}
+
+#current_user {
+  &:hover {
+    color: rgba(-1, 0, 0, 0.55);
+    cursor: default;
+  }
 }

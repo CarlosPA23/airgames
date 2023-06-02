@@ -3,10 +3,11 @@
   <%= cl_image_tag @game.photo.key, class: "img-style" %>
   <div class="show-details container">
     <h1 class="title"><%= @game.title %></h1>
-    <p>Owner: <%= @game.user.first_name %></p>
-    <p>Description: <%= @game.description %></p>
-    <p>Price: €<%= @game.price %>/hour</p>
-    <p>Category: <%= @game.category %></p>
+
+    <p><strong>Owner:</strong> <%= @game.user.first_name %></p>
+    <p><strong>Description:</strong> <%= @game.description %></p>
+    <p><strong>Price: €</strong><%= @game.price %>/day</p>
+    <p><strong>Category:</strong> <%= @game.category %></p>
 
     <% if !policy(@game).edit? %>
         <%= link_to "Book it!", new_game_booking_path(@game), class: 'btn btn-primary book' %>
@@ -39,16 +40,17 @@
           <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, review_path(review), data: { turbo_method: :delete } %>
         <% end %>
       <% end %>
-
-      <% unless @game.reviews.empty? %>
-        <h2><%= 'Reviews' %></h2>
-      <% end %>
-    </div>
   </div>
 </div>
 
+<div class="showgrid-bottom">
+  <% unless @game.reviews.empty? %>
+        <h2><%= 'Reviews' %></h2>
+      <% end %>
+  </div>
   <div style="width: 70%; height: 500px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>", class='map'>
   </div>
+</div>

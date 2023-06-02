@@ -4,7 +4,7 @@
   text-align: center;
   background-color: #D9E8E3;
   object-fit: cover;
-  border-radius: 60px;
+  border-radius: 15px;
   padding: 1em 2em;
   font-size: 16px;
   line-height: 30px;
@@ -19,10 +19,11 @@ body {
 }
 
 .img-style {
+  object-fit: cover;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 60px;
+  border-radius: 15px;
   width: 100%;
   height: 100%;
   box-shadow: 2px 2px 17px grey;
@@ -68,10 +69,19 @@ a:hover {
 
 .map {
   margin: 20px auto;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 0px 3px 20px rgba(0,0,0,0.3);
 }
 
 .book {
   width: 200px;
+}
+
+p {
+  letter-spacing: 2px;
+}
+
+.showgrid-bottom {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
 }

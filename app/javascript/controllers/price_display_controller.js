@@ -20,13 +20,12 @@ export default class extends Controller {
   //   const totalPrice = days * this.priceValue
   //   this.priceTarget.innerText = totalPrice
   // }
-
   calculate(event) {
     const startDate = new Date(this.startDateTarget.value);
     const endDate = new Date(this.endDateTarget.value);
     const differenceInMilliseconds = endDate - startDate;
-    const differenceInHours = differenceInMilliseconds / 1000 / 60 / 60; // convert milliseconds to hours
-    const totalPrice = differenceInHours * this.priceValue;
+    const differenceInDays = Math.ceil(differenceInMilliseconds / 1000 / 60 / 60 / 24); // convert milliseconds to days and round up
+    const totalPrice = differenceInDays * this.priceValue;
     this.priceTarget.innerText = totalPrice;
   }
 
@@ -77,7 +76,7 @@ export default class extends Controller {
       onChange: (selectedDates, dateStr, instance) => {
         if (selectedDates.length > 0) {
           let date = new Date(selectedDates[0]);
-          date.setHours(date.getHours() + 1);
+          date.setDate(date.getDate() + 1);  // set minimum end date to 1 day after start date
           if (endDatePicker) {
             endDatePicker.set('minDate', date);
           }
@@ -91,5 +90,6 @@ export default class extends Controller {
       minuteIncrement: 30,
     });
   }
+
 
 }
