@@ -13,6 +13,8 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Total Price</th>
+            <th>Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +24,8 @@
               <td><%= booking.start_date %></td>
               <td><%= booking.end_date %></td>
               <td><%= booking.total_price %></td>
-
+              <td><%= booking.status %></td>
+              <td><%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, bookings_path(:id), data: { turbo_method: :delete } %></td>
             </tr>
           <% end %>
         </tbody>
@@ -39,11 +42,11 @@
             <tr>
               <th>Game</th>
               <th>Name</th>
-              <th>Username</th>
               <th>Start Date</th>
               <th>End Date</th>
               <th>Total Price</th>
-              <th>Accept</th>
+              <th>Status</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -51,11 +54,11 @@
             <tr>
               <td><%= booking.game.title %></td>
               <td><%= "#{booking.user.first_name} #{booking.user.last_name}"%></td>
-              <td><%= booking.user.email%></td>
               <td><%= booking.start_date %></td>
               <td><%= booking.end_date %></td>
               <td><%= booking.total_price %></td>
-              <td><input type="checkbox" name="question" value="14" class="clickable" id="2"/></td>
+              <td><%= booking.status%></td>
+              <td><%=link_to "👍", booking_path(booking, "booking[status]": "Accepted"), data: {turbo_method: :patch}, class: "status_btn" %><%=link_to "👎", booking_path(booking, "booking[status]": "Rejected"), data: {turbo_method: :patch}, class: "status_btn" %>
             </tr>
           <% end %>
           </tbody>

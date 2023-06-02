@@ -6,10 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "Deleting previous database"
+
 Booking.destroy_all
 Review.destroy_all
 Game.destroy_all
 User.destroy_all
+
+puts "Database deleted"
 
 addresses = [
   "Carrer de Provença, 123, Barcelona, Spain",
@@ -62,6 +66,8 @@ addresses = [
   "Carrer de Bailén, 23456, Barcelona, Spain",
   "Carrer de Pujades, 78901, Barcelona, Spain"
 ]
+
+status = ["Pending", "Rejected", "Accepted"]
 
 # USERS
 
@@ -189,5 +195,58 @@ game.photo.attach(io: file, filename: "#{game.title.first}#{game.category.first}
 game.user = User.all.sample
 game.save
 
-
 puts "Games added :)"
+
+puts "Adding bookings..."
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-06-02", end_date: "2023-06-04", total_price: 10, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-06-02", end_date: "2023-06-04", total_price: 20, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-06-02", end_date: "2023-06-04", total_price: 30, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-06-02", end_date: "2023-06-04", total_price: 20, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-06-02", end_date: "2023-06-04", total_price: 50, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-06-02", end_date: "2023-06-04", total_price: 40, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-07-02", end_date: "2023-07-04", total_price: 30, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-07-02", end_date: "2023-07-04", total_price: 20, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-07-02", end_date: "2023-07-04", total_price: 15, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+user = User.all.sample
+game = Game.all.sample
+booking = Booking.create({ start_date: "2023-07-02", end_date: "2023-07-04", total_price: 10, user_id: user.id, game_id: game.id, status: status.sample.to_s})
+booking.save
+
+puts "Bookings added :)"
