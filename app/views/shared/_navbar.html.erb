@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light fixed-top <%= params[:action] == 'home' ? 'navbar-transparent' : 'navbar-white' %>" <%= "data-controller=navbar data-action=scroll@window->navbar#updateNavbar" if params[:action] == 'home' %>>
+<div class="navbar navbar-expand-sm navbar-light <%= params[:action] == 'home' ? 'navbar-transparent fixed-top' : 'navbar-white sticky-top' %>" <%= "data-controller=navbar data-action=scroll@window->navbar#updateNavbar" if params[:action] == 'home' %>>
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "PlayPal-logo.png", id: "logo" %>
