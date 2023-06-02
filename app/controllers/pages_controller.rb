@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @my_bookings_received = current_user.received_bookings
+  end
 end

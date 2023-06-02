@@ -1,1 +1,28 @@
-<h1>My Dashboard</h1>
+<div>
+  <h2>Bookings Received</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Game</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Total Price</th>
+          <th>Accept</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @my_bookings_received.each do |booking| %>
+          <tr>
+            <td><%= booking.game.title %></td>
+            <td><%= "#{booking.user.first_name} #{booking.user.last_name}"%></td>
+            <td><%= booking.user.email%></td>
+            <td><%= booking.start_date %></td>
+            <td><%= booking.end_date %></td>
+            <td><%= booking.total_price %></td>
+            <td><input type="checkbox" name="question" value="14" class="clickable" id="2"/></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
