@@ -17,9 +17,11 @@
             <%= current_user.photo.attached? ? cl_image_tag(current_user.photo.key, class: "avatar", alt: "dropdown menu") : image_tag('https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg', class: "avatar") %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
               <%= link_to "All games", games_path, class: 'dropdown-item' %>
               <%= link_to "My Bookings", dashboard_path , class: "dropdown-item" %>
               <%= link_to "Edit account", edit_user_registration_path , class: "dropdown-item" %>
+
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

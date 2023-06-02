@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :bookings, only: %i[index show edit update destroy]
   resources :reviews, only: [:destroy]
 
-  get ':category', to: 'categories#index'
   get '/dashboard', to: 'pages#dashboard'
+
+  # this route goes last always
+  get ':category', to: 'categories#index'
 end
