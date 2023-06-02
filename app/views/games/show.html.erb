@@ -5,7 +5,7 @@
     <h1 class="title"><%= @game.title %></h1>
     <p>Owner: <%= @game.user.first_name %></p>
     <p>Description: <%= @game.description %></p>
-    <p>Price: €<%= @game.price %>/hour</p>
+    <p>Price: €<%= @game.price %>/day</p>
     <p>Category: <%= @game.category %></p>
 
     <% if !policy(@game).edit? %>

@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address, :photo])
   end
 
+  # this action is used to have the booking of each users to have the view in Dashboard.
+  def userdashboard
+    @bookings = current_user.bookings.order(created_at: :desc)
+  end
+
   private
 
   def skip_pundit?
