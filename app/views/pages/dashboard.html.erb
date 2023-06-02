@@ -1,1 +1,30 @@
-<h1>My Dashboard</h1>
+<div class="container mt-5">
+  <br/>
+  <br/>
+
+  <h1>My Dashboard</h1>
+  <h2>Bookings for <%= current_user.email %></h2>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Game Title</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.game.title %></td>
+            <td><%= booking.start_date %></td>
+            <td><%= booking.end_date %></td>
+            <td><%= booking.total_price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

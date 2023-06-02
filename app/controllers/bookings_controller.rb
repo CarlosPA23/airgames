@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.user = current_user
     @booking.game = @game
+    @booking.total_price = (@booking.end_date - @booking.start_date) * @game.price
     if @booking.save
       redirect_to game_path(@game)
     else
@@ -60,4 +61,5 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
   end
+
 end

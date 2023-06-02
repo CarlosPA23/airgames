@@ -3,9 +3,10 @@
   <%= cl_image_tag @game.photo.key, class: "img-style" %>
   <div class="show-details container">
     <h1 class="title"><%= @game.title %></h1>
+
     <p><strong>Owner:</strong> <%= @game.user.first_name %></p>
     <p><strong>Description:</strong> <%= @game.description %></p>
-    <p><strong>Price: €</strong><%= @game.price %>/hour</p>
+    <p><strong>Price: €</strong><%= @game.price %>/day</p>
     <p><strong>Category:</strong> <%= @game.category %></p>
 
     <% if !policy(@game).edit? %>
