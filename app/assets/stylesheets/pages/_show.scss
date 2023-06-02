@@ -85,3 +85,12 @@
 .book {
   width: 200px;
 }
+
+#reviews {
+  max-height: 300px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

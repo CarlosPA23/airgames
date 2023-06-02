@@ -45,7 +45,7 @@
             </span>
             <span class="me-3 pt-2">
               <% if policy(review).destroy? %>
-                <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, review_path, data: { turbo_method: :delete } %>
+                <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, review_path(review), data: { turbo_method: :delete } %>
               <% end %>
             </span>
           </p>
