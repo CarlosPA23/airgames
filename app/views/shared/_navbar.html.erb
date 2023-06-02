@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light fixed-top <%= params[:action] == 'home' ? 'navbar-transparent' : 'navbar-white' %>" <%= "data-controller=navbar data-action=scroll@window->navbar#updateNavbar" if params[:action] == 'home' %>>
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "logo_new.png" %>
+      <%= image_tag "PlayPal-Logo.png" %>
     <% end %>
 
 
@@ -20,7 +20,7 @@
           </li>
           <li class="nav-item dropdown">
           <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.photo.attached? ? cl_image_tag(current_user.photo.key, class: "avatar", alt: "dropdown menu") : image_tag('https://static-00.iconduck.com/assets.00/user-avatar-icon-512x512-vufpcmdn.png', class: "avatar") %>
+            <%= current_user.photo.attached? ? cl_image_tag(current_user.photo.key, class: "avatar", alt: "dropdown menu") : image_tag('https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg', class: "avatar") %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Edit account", edit_user_registration_path , class: "dropdown-item" %>
