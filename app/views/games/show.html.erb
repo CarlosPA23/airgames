@@ -1,55 +1,59 @@
 <%= link_to '<i class="fa-solid fa-arrow-left-long"></i> back'.html_safe, games_path, class: 'me-5 back' %>
-<div class="showgrid">
-  <%= cl_image_tag @game.photo.key, class: "img-style" %>
-  <div class="show-details container">
-    <h1 class="title"><%= @game.title %></h1>
-    <p><strong>Owner:</strong> <%= @game.user.first_name %></p>
-    <p><strong>Description:</strong> <%= @game.description %></p>
-    <p><strong>Price: €</strong><%= @game.price %>/hour</p>
-    <p><strong>Category:</strong> <%= @game.category %></p>
+  <div class="showgrid-top">
+    <%= cl_image_tag @game.photo.key, class: "img-style" %>
+    <div class="show-details container">
+      <h1 class="title"><%= @game.title %></h1>
+      <p><strong>Owner:</strong> <%= @game.user.first_name %></p>
+      <p><strong>Description:</strong> <%= @game.description %></p>
+      <p><strong>Price: €</strong><%= @game.price %>/hour</p>
+      <p><strong>Category:</strong> <%= @game.category %></p>
 
-    <% if !policy(@game).edit? %>
+      <% if !policy(@game).edit? %>
         <%= link_to "Book it!", new_game_booking_path(@game), class: 'btn btn-primary book' %>
       <% end %>
 
-    <div class="btn-line">
-      <% if policy(@game).edit? %>
-        <%= link_to '<i class="fa-solid fa-pen"></i>'.html_safe, edit_game_path(@game), class: 'me-5' %>
-      <% end %>
-      <% if policy(@game).destroy? %>
-        <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, game_path(@game), data: { turbo_method: :delete }, class: 'me-5' %>
-      <% end %>
-
-    <% unless @game.reviews.empty? %>
-      <h2><%= 'Reviews' %></h2>
-    <% end %>
-
-    <%= link_to "Add review", new_game_review_path(@game) %>
-    <% @game.reviews.each do |review| %>
-      <p><%= review.user.first_name %>: <%= review.comment %></p>
-      <p>
-        <% review.rating.times do %>
-          <i class="fa-solid fa-star"></i>
+      <div class="btn-line">
+        <% if policy(@game).edit? %>
+          <%= link_to '<i class="fa-solid fa-pen"></i>'.html_safe, edit_game_path(@game), class: 'me-5' %>
         <% end %>
-        <% (5 - review.rating).times do %>
-          <i class="fa-solid fa-star empty-star"></i>
+        <% if policy(@game).destroy? %>
+          <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, game_path(@game), data: { turbo_method: :delete }, class: 'me-5' %>
         <% end %>
-      </p>
-        <% if policy(review).destroy? %>
-          <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, review_path(review), data: { turbo_method: :delete } %>
-        <% end %>
-      <% end %>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="showgrid-bottom">
-  <% unless @game.reviews.empty? %>
-        <h2><%= 'Reviews' %></h2>
+  <div class="showgrid-bottom">
+    <div id="reviews">
+      <h2 class="mt-3"><%= 'Reviews' %></h2>
+
+      <% @game.reviews.each do |review| %>
+        <div class="mb-3">
+          <p><%= current_user.photo.attached? ? cl_image_tag(current_user.photo.key, class: "avatar", alt: "dropdown menu") : image_tag('https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg', class: "avatar") %> <span class="ms-2"><%= current_user.first_name %> <%= current_user.last_name %></span></p>
+          <p>
+            <span>
+              <% review.rating.times do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="fa-solid fa-star empty-star"></i>
+              <% end %>
+            </span>
+          </p>
+          <p><%= review.comment %></p>
+          <span>
+              <% if policy(review).destroy? %>
+                <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, review_path(review), data: { turbo_method: :delete } %>
+              <% end %>
+          </span>
+        </div>
       <% end %>
+      <%= render 'reviews/new', game: @game, review: @review %>
+    </div>
+
+    <div style="width: 70%; height: 500px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>", class='map'>
+    </div>
   </div>
-  <div style="width: 70%; height: 500px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>", class='map'>
-  </div>
-</div>
