@@ -22,8 +22,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.game = @game
     @booking.total_price = (@booking.end_date - @booking.start_date) * @game.price
+    @booking.status = "Pending"
     if @booking.save
-      redirect_to game_path(@game)
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +40,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     if @booking.update(booking_params)
-      redirect_to game_path(@booking.game)
+      redirect_to dashboard_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -49,7 +50,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     @booking.destroy
-    redirect_to game_path(@booking.game)
+    redirect_to dashboard_path
   end
 
   private
@@ -59,7 +60,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 
 end
