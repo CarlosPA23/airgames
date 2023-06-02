@@ -10,15 +10,17 @@
   line-height: 30px;
 
   a {
-    color: black;
+    transition: 0.3s opacity;
+    padding: 12px;
+    margin-top: 27px;
 
-    //&:hover {
-      //color: #86CCFE;
-    //}
+    &:hover {
+      opacity: 0.5s;
+    }
   }
 
   p {
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
 }
 
@@ -53,18 +55,17 @@ body {
 
 .fa-pen {
   font-size: 20px;
+  padding-right: 19px;
+  color: black
 }
 
 .fa-trash-can {
   font-size: 20px;
+  color: black;
 }
 
 .fa-comment {
   font-size: 20px;
-}
-
-.btn-line {
-  padding: 10px;
 }
 
 .map {
@@ -83,5 +84,24 @@ body {
 }
 
 .games-details {
-  padding: 20px;
+  padding: 38px 30px;
+  text-align: center;
+  margin-top: -25px;
+}
+
+.details-title {
+  padding-top: 18px;
+}
+
+.icons-holder {
+  position: relative;
+  .right-aligned-icons {
+    position: absolute;
+    right: -30px;
+    top: -26px;
+  }
+}
+
+.title-line {
+  padding-top: 40px;
 }
