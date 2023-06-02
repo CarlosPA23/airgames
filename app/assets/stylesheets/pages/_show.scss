@@ -24,12 +24,8 @@
   }
 }
 
-body {
-  background-color: #F9F9F9;
-  margin-bottom: 40px;
-}
-
 .img-style {
+  object-fit: cover;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -46,7 +42,7 @@ body {
   padding-left: 33px;
 }
 
-.showgrid {
+.showgrid-top, .showgrid-bottom {
   display: grid;
   grid-template-columns: 2fr 3fr;
   padding: 10px 30px;
@@ -66,6 +62,10 @@ body {
 
 .fa-comment {
   font-size: 20px;
+}
+
+.btn-line {
+  padding: 10px;
 }
 
 .map {
@@ -105,3 +105,4 @@ body {
 .title-line {
   padding-top: 40px;
 }
+

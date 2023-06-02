@@ -21,7 +21,7 @@ class GamesController < ApplicationController
 
   def show
     authorize @game
-
+    @review = Review.new
     @markers = [{
       lat: @game.latitude,
       lng: @game.longitude
