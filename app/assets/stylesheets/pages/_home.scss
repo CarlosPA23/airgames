@@ -3,7 +3,7 @@ body {
   &::-webkit-scrollbar {
     display: none;
   }
-  height: 3000px;
+  min-height: 150vh;
 }
 
 a {
