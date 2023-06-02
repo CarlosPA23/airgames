@@ -38,15 +38,26 @@
 .back {
   display: block;
   font-size: 20px;
-  padding-top: 7px;
-  padding-left: 33px;
 }
 
-.showgrid-top, .showgrid-bottom {
+.showgrid-game {
   display: grid;
   grid-template-columns: 2fr 3fr;
   padding: 10px 30px;
   grid-gap: 20px;
+}
+
+.showgrid-map {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px 30px;
+}
+
+.showgrid-reviews {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .fa-pen {
@@ -78,6 +89,15 @@
   width: 200px;
 }
 
+#reviews {
+  max-height: 300px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .showgrid-bottom {
   display: grid;
   grid-template-columns: 2fr 3fr;
@@ -105,4 +125,3 @@
 .title-line {
   padding-top: 40px;
 }
-
