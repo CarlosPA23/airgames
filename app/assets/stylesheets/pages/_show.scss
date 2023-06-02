@@ -8,14 +8,20 @@
   padding: 1em 2em;
   font-size: 16px;
   line-height: 30px;
-}
 
-body {
-  background-color: #F9F9F9;
-  margin-bottom: 40px;
-}
+  a {
+    color: black;
+    transition: 0.3s opacity;
 
-.title {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  p {
+    letter-spacing: 2px;
+  }
+
 }
 
 .img-style {
@@ -36,7 +42,7 @@ body {
   padding-left: 33px;
 }
 
-.showgrid {
+.showgrid-top, .showgrid-bottom {
   display: grid;
   grid-template-columns: 2fr 3fr;
   padding: 10px 30px;
@@ -55,14 +61,6 @@ body {
   font-size: 20px;
 }
 
-a {
-  color: black;
-}
-
-a:hover {
-  color: #86CCFE;
-}
-
 .btn-line {
   padding: 10px;
 }
@@ -75,13 +73,4 @@ a:hover {
 
 .book {
   width: 200px;
-}
-
-p {
-  letter-spacing: 2px;
-}
-
-.showgrid-bottom {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
 }
