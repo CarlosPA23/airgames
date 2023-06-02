@@ -8,14 +8,23 @@
   padding: 1em 2em;
   font-size: 16px;
   line-height: 30px;
+
+  a {
+    color: black;
+
+    //&:hover {
+      //color: #86CCFE;
+    //}
+  }
+
+  p {
+    letter-spacing: 2px;
+  }
 }
 
 body {
   background-color: #F9F9F9;
   margin-bottom: 40px;
-}
-
-.title {
 }
 
 .img-style {
@@ -54,14 +63,6 @@ body {
   font-size: 20px;
 }
 
-a {
-  color: black;
-}
-
-a:hover {
-  color: #86CCFE;
-}
-
 .btn-line {
   padding: 10px;
 }
@@ -76,11 +77,11 @@ a:hover {
   width: 200px;
 }
 
-p {
-  letter-spacing: 2px;
-}
-
 .showgrid-bottom {
   display: grid;
   grid-template-columns: 2fr 3fr;
+}
+
+.games-details {
+  padding: 20px;
 }
