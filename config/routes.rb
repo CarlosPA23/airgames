@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'pages#dashboard'
 
+  # this route goes last always
   get ':category', to: 'categories#index'
 end
