@@ -18,5 +18,4 @@ class User < ApplicationRecord
   has_many :games, through: :bookings
 
   has_many :reviews, dependent: :destroy
-
 end

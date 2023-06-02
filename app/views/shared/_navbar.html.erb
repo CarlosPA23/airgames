@@ -20,7 +20,7 @@
           </li>
           <li class="nav-item dropdown">
           <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
+            <%= current_user.photo.attached? ? cl_image_tag(current_user.photo.key, class: "avatar", alt: "dropdown menu") : image_tag('https://static-00.iconduck.com/assets.00/user-avatar-icon-512x512-vufpcmdn.png', class: "avatar") %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Edit account", edit_user_registration_path , class: "dropdown-item" %>
